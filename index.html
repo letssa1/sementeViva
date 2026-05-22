@@ -14,7 +14,7 @@
 <nav class="navbar navbar-expand-lg py-0 fixed-top">
   <div class="container">
 
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="#home">
       <img id="logo" src="logo.png" alt="Logo" height="60rem">
     </a>
 
@@ -40,8 +40,8 @@
 
 <!-- Header -->
 
-<div class="line" id="header"></div>
-<section id="home">
+<div class="line" id="home"></div>
+<section>
   <div class="container px-lg-5">
     <img class="mx-auto d-block img-fluid rounded" src="sobre-nos.png" alt="">
     <h1>✧⠀ Plante com inteligência</h1>
@@ -395,7 +395,7 @@
   }
 
 p {
-  color: darkgreen;
+  color: #002506;
   font-size: medium;
   font-family: "lato", sans-serif;
 }
@@ -478,6 +478,7 @@ p {
     text-transform: uppercase;
     display: block;
     max-width: 180px;
+    font-size:1rem;
     margin: 10px auto;
     z-index: 3;
 
@@ -515,7 +516,7 @@ p {
     z-index: -1;
   }
 
-  #header {
+  #home{
     background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(192, 240, 178, 0));
   }
 
@@ -530,18 +531,11 @@ p {
       padding: 2rem 0;
     }
 
-  }
-
-
-  @media (max-width: 991px) {
-
     .line {
       width: 50%;
       height: 2px;
       margin: 20px auto;
     }
-
-
     #logo {
       height: 45px;
     }
@@ -550,13 +544,13 @@ p {
       font-size: small;
     }
 
-    p {
+    h2 {
       font-size: smaller;
-    };
-
-    .btn {
-      transform: scale(.5);
     }
+
+    p {
+      font-size: x-small;
+    };
 
   }
   * {
