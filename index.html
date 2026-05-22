@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Love+Light&family=Ruthie&display=swap" rel="stylesheet">
+</head>
+<body  class="pt-5">
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg py-0 fixed-top">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">
+      <img id="logo" src="logo.png" alt="Logo" height="60rem">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto">
+          <li><a class="nav-link mx-4" href="#home">Home</a></li>
+          <li><a class="nav-link mx-4" href="#semente"> Semente Guardiã </a></li>
+          <li><a class="nav-link mx-4" href="#clima"> Clima Consistente </a></li>
+          <li><a class="nav-link mx-4" href="#market"> Marketplace </a></li>
+          <li><a class="nav-link mx-4" href="#contato"> Fale Conosco </a></li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="overlay">
+</div>
+
+<!-- Header -->
+
+<div class="line" id="header"></div>
+<section id="home">
+  <div class="container px-lg-5">
+    <img class="mx-auto d-block img-fluid rounded" src="sobre-nos.png" alt="">
+    <h1>✧⠀ Plante com inteligência</h1>
+     <p class="container">
+       O Semente Viva combina IA, clima em tempo real e dados de solo
+      para guiar cada etapa do seu cultivo, do plantio à colheita.
+     </p>
+    <a href="#clima" class="btn">Começar agora</a>
+  </div>
+
+</section>
+
+<!--SEMENTE GUARDIÃ-->
+<section id="semente" class="py-5">
+  <div class="container px-lg-5">
+
+    <div class="line"></div>
+
+    <h1>✦⠀ Semente Guardiã</h1>
+    <p>
+      Tecnologia que protege sua plantação em todas as fases do crescimento.
+    </p>
+
+    <div class="row g-4 mt-3">
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-card h-100">
+          <h1>Diagnóstico de Sementes</h1>
+          <p>
+            Identifique a qualidade e viabilidade das sementes antes do plantio com análise por imagem.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-card h-100">
+          <h1>Monitoramento de Crescimento</h1>
+          <p>
+            Acompanhe cada estágio da planta com alertas automáticos e relatórios semanais.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-card h-100">
+          <h1>Irrigação Inteligente</h1>
+          <p>
+            Recomendações de rega baseadas em umidade do solo, temperatura e previsão do tempo.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="feature-card h-100">
+          <h1>Proteção contra Pragas</h1>
+          <p>
+            Detecte fungos e doenças cedo com IA visual e receba o plano de ação correto.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="line" id="clima"></div>
+
+<!--IA E CLIMA-->
+<section class="IAeClima py-5">
+  <div class="container px-lg-5">
+    <div class="row align-items-center g-5">
+
+      <!-- Esquerda -->
+      <div class="col-12 col-lg-6 clima-box">
+        <h1>IA e Clima:</h1>
+        <p>
+          O Semente Viva usa GPS, clima e dados da plantação para recomendar
+          o melhor momento para plantar, regar e proteger o cultivo.
+        </p>
+
+        <div class="clima-forma">
+          <div class="clima-form">
+            <input type="text" class="form-control mb-2" placeholder="Sua localização">
+            <input type="text" class="form-control mb-2" placeholder="Semente escolhida">
+            <button class="btn" onclick="analisar()">Analisar</button>
+          </div>
+        </div>
+
+        <!-- Resultado da análise (oculto por padrão) -->
+        <div id="resultado" class="mt-3 p-3 rounded-4" style="display:none;background:rgba(255,255,255,.8);border:1px solid #c8dfc8;font-size:.88rem;color:var(--verde-medio);line-height:1.7;"></div>
+      </div>
+
+      <!-- Direita: cards -->
+      <div class="col-12 col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="card-tempo h-100">
+              <p class="temperatura">24°</p>
+              <p>Chuva prevista</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-alerta h-100">
+              <h1>Alerta inteligente:</h1>
+              <p>Não plante agora. Há previsão de chuva forte para sua região, o que pode prejudicar o desenvolvimento da semente.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card-ia">
+              <h1>Analise sua planta com IA</h1>
+              <p>Envie uma foto para identificar fungos, doenças ou sinais de desgaste.</p>
+              <input type="file" id="inputFoto" accept="image/*" style="display:none" onchange="previewFoto(event)">
+              <button class="btn" onclick="document.getElementById('inputFoto').click()">Selecionar imagem</button>
+              <div id="previewContainer" class="mt-3" style="display:none;">
+                <img id="previewImg" src="" alt="Preview" class="rounded-3" style="max-width:100%;max-height:180px;object-fit:cover;">
+                <div class="mt-2">
+                  <button class="btn" onclick="analisarFoto()">Analisar com IA</button>
+                </div>
+              </div>
+              <div id="resultadoFoto" class="mt-2" style="font-size:.85rem;color:var(--verde-medio);display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="line" id="market"></div>
+
+<!--
+     MARKETPLACE-->
+<section class="marketplace py-5">
+  <div class="container px-lg-5">
+    <h1>Marketplace</h1>
+    <p class="sub">Insumos, sementes e ferramentas selecionados para o agricultor moderno.</p>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="produto-card">
+          <img src="milho.png" alt="">
+          <h1>Milho Híbrido BRS</h1>
+          <p>Alta produtividade, resistente à seca e doenças foliares.</p>
+          <div class="preco">R$ 48,90</div>
+          <button class="btn">Comprar</button>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="produto-card">
+          <img src="soja.png" alt="">
+          <h1>Soja Roundup Ready</h1>
+          <p>Ciclo médio, excelente adaptação ao Cerrado e Sul do país.</p>
+          <div class="preco">R$ 72,00</div>
+          <button class="btn">Comprar</button>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="produto-card">
+          <img src="fertilizante.png" alt="">
+          <h1>Fertilizante Orgânico</h1>
+          <p>Composto natural de húmus e minerais. Ideal para hortas.</p>
+          <div class="preco">R$ 34,50</div>
+          <button class="btn">Comprar</button>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="produto-card">
+          <img src="irrigador.png" alt="">
+          <h1>Kit Irrigação Gotejo</h1>
+          <p>Sistema completo para pequenas e médias propriedades rurais.</p>
+          <div class="preco">R$ 189,00</div>
+          <button class="btn">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="line" id="contato"></div>
+
+<!--
+     FALE CONOSCO
+ -->
+<section class="contato py-5">
+  <div class="container px-lg-5">
+    <div class="row g-5 align-items-start">
+      <div class="col-12 col-lg-5">
+        <h1>Fale Conosco</h1>
+        <p class="sub">Tem alguma dúvida, sugestão ou quer conhecer nossos planos? <br> Entre em contato.</p>
+
+        <div class="d-flex flex-column gap-3" style="font-size:.9rem;color:var(--verde-medio);">
+          <span>contato@sementeviva.com.br</span>
+          <span>(11) 99999-0000</span>
+          <span>São Paulo – SP, Brasil</span>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="contato-form">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <input type="text" class="form-control" placeholder="Seu nome">
+            </div>
+            <div class="col-12 col-md-6">
+              <input type="email" class="form-control" placeholder="Seu e-mail">
+            </div>
+            <div class="col-12">
+              <select class="form-select">
+                <option value="" disabled selected>Assunto</option>
+                <option>Dúvida sobre o produto</option>
+                <option>Suporte técnico</option>
+                <option>Parceria comercial</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="4" placeholder="Sua mensagem..."></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+     FOOTER
+ -->
+<footer class="container-fluid mt-5 py-0"
+        style="background: linear-gradient(to right, #00570c, #0d7518, #00570c);">
+
+  <div class="container">
+
+    <div class="row g-3 text-md-start align-items-start">
+
+      <!-- BRAND -->
+      <div class="col">
+        <h1 class="text-light">Semente Viva</h1>
+        <p class="text-light opacity-75 small">
+          Tecnologia e natureza juntas para transformar a agricultura brasileira.
+        </p>
+      </div>
+
+      <!-- PRODUTO -->
+      <div class="col">
+        <h1 class="text-light">Produto</h1>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#semente" class="text-white text-decoration-none opacity-75">Semente Guardiã</a>
+          <a href="#clima" class="text-white text-decoration-none opacity-75">IA e Clima</a>
+          <a href="#market" class="text-white text-decoration-none opacity-75">Marketplace</a>
+        </div>
+      </div>
+
+      <!-- EMPRESA -->
+      <div class="col">
+        <h1 class="text-light">Empresa</h1>
+        <div class="d-flex flex-column gap-2 small">
+          <a href="#home" class="text-white text-decoration-none opacity-75">Sobre nós</a>
+          <a href="#contato" class="text-white text-decoration-none opacity-75">Contato</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="border-top border-light border-opacity-25 mt-4 pt-3 text-center">
+      <p class="text-light opacity-75 mb-0 small">
+        © 2026 Semente Viva
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+<style>
+
+  body{
+    background-image:
+            radial-gradient(circle at 15% 25%, rgba(0, 200, 10, 0.3), transparent 40%),
+            radial-gradient(circle at 85% 20%, rgba(100, 221, 23, 0.39), transparent 45%),
+            radial-gradient(circle at 50% 85%, rgba(155, 255, 89, 0.44), transparent 50%);
+    background-size: cover;
+
+
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 10px;
+    color: darkgreen;
+    padding: 20px;
+  }
+
+p {
+  color: darkgreen;
+  font-size: medium;
+  font-family: "lato", sans-serif;
+}
+
+  .navbar {
+      border-top: 7px solid;
+    border-bottom: 3px solid;
+      border-image: linear-gradient(to right, #00570c, #559600, #00570c) 1;
+    background-image: linear-gradient(to right, #c8f4cb, rgb(229, 249, 219), #cff5b7);
+    background-size: cover;
+    font-family: 'lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    font-size: .8rem;
+    font-weight: 800;
+
+
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    transform: scale(.6);
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
+
+  .navbar-toggler:hover {
+    transition: opacity;
+    background-color: rgba(255, 255, 255, 0.53);
+    box-shadow: 0 0 .1rem 0.1rem rgb(119, 212, 0);
+  }
+
+  .navbar-toggler:focus {
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgb(119, 212, 0);
+  }
+
+
+  .navbar .nav-link {
+    position: relative;
+    color: #00570d;
+    transition: transform 0.3s ease, border-bottom 0.3s ease;
+
+  }
+
+  .navbar .nav-link:hover{
+    transform: scale(1.1);
+    border-bottom: #77d400 2px solid;
+  }
+  .navbar .nav-link.active {
+    transform: scale(1.1);
+    border-bottom: #77d400 2px solid;
+  }
+
+  .navbar-brand {
+    margin-top: 1rem;
+  }
+
+  .line {
+
+    width: 25%;
+    height: 4px;
+    background-image: linear-gradient(to right, #00570c, #559600, #00570c);
+  z-index: 5;
+    margin: 60px auto;
+  }
+
+  header {
+   padding-top: 8rem;
+
+  }
+
+  .btn {
+    background-image: linear-gradient(to bottom right, #ffffff, #c0f0b2);
+    font-family: "Lato", sans-serif;
+    color: darkgreen;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+    max-width: 180px;
+    margin: 10px auto;
+    z-index: 3;
+
+  }
+
+  .btn:hover {
+    background-image: linear-gradient(to bottom right, rgba(20, 66, 3, 0.74), #002905);
+    transform: scale(1.08);
+    transition-duration: 0.6s;
+  color: #def7d1;
+
+  }
+
+  .produto-card img {
+    border-radius: 5%;
+  }
+
+  #particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.71), rgba(255, 255, 255, 0),rgba(255, 255, 255, 0), rgba(0, 87, 13, 0.5));
+    position: fixed;
+    z-index: -1;
+  }
+
+  #header {
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(192, 240, 178, 0));
+  }
+
+  .home img {
+    z-index: 2;
+  }
+
+
+  /* MOBILE */
+  @media (max-width: 991px) {
+    section {
+      padding: 2rem 0;
+    }
+
+  }
+
+
+  @media (max-width: 991px) {
+
+    .line {
+      width: 50%;
+      height: 2px;
+      margin: 20px auto;
+    }
+
+
+    #logo {
+      height: 45px;
+    }
+
+    h1 {
+      font-size: small;
+    }
+
+    p {
+      font-size: smaller;
+    };
+
+    .btn {
+      transform: scale(.5);
+    }
+
+  }
+  * {
+
+
+    cursor: url('https://cdn.cursors-4u.net/previews/brazil-pointer-cf148edc-32.webp') 32 32, auto !important;
+  }
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function createParticle() {
+    return {
+      x: rand(0, canvas.width),
+      y: rand(0, canvas.height),
+      r: rand(1, 3.5),
+      opacity: rand(0.1, 0.55),
+      speedX: rand(-0.3, 0.3),
+      speedY: rand(-0.6, -0.15),
+      drift: rand(0, Math.PI * 2),
+      driftSpeed: rand(0.005, 0.02)
+    };
+  }
+
+  for (let i = 0; i < COUNT; i++) particles.push(createParticle());
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.drift += p.driftSpeed;
+      p.x += p.speedX + Math.sin(p.drift) * 0.3;
+      p.y += p.speedY;
+      if (p.y < -10) { p.y = canvas.height + 5; p.x = rand(0, canvas.width); }
+      if (p.x < -10) p.x = canvas.width + 5;
+      if (p.x > canvas.width + 10) p.x = -5;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(100, 220, 80, ${p.opacity})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
